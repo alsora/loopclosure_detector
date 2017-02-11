@@ -1,8 +1,8 @@
 #include "defs.h"
-#include "display.h"
+#include "database.h"
 #include "utils.h"
 #include "points_utils.h"
-#include "p3p_solver.h"
+#include "solver.h"
 #include "distance_map_correspondence_finder.h"
 #include <unistd.h>
 
@@ -20,8 +20,8 @@ using namespace pr;
 int main (int argc, char** argv) {
     
 
-    ifstream inputFile("../03-2DLoopDetector/loop-detector-2d.txt");
-    string odomFile("../03-2DLoopDetector/trajectoryLaser.g2o");
+    ifstream inputFile("../loop-detector-2d.txt");
+    string odomFile("../trajectoryLaser.g2o");
     
     
    
@@ -66,7 +66,7 @@ int main (int argc, char** argv) {
     int correspondencesThreshold = 400;     //Minimum number of corresponding points between reference and target
     
     
-    P3PSolver solver;
+    Solver solver;
     
     DistanceMapCorrespondenceFinder correspondence_finder;
 

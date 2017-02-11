@@ -1,10 +1,10 @@
 #include <Eigen/Cholesky>
 #include <iostream>
 
-#include "p3p_solver.h"
+#include "solver.h"
 namespace pr {
   
-  P3PSolver::P3PSolver(){
+  Solver::Solver(){
       
     _scan_points=0;
     _ref_points=0;
@@ -14,7 +14,7 @@ namespace pr {
     _kernel_thereshold=10;
   }
 
-  void P3PSolver::init(
+  void Solver::init(
 	    const Vector2fVector& ref_points,
 	    const Vector2fVector& scan_points,
                        const Eigen::Matrix3f initial_guess){
@@ -29,14 +29,14 @@ namespace pr {
   }
   
     
-    float P3PSolver::computeError (const IntPairVector& correspondences,
+    float Solver::computeError (const IntPairVector& correspondences,
                                    const Vector2fVector observed_points,
                                    const Vector2fVector reference_points
                                    ){
 
         float chi = 0;
         int count = 0;
-        float threshold = 10000;
+        float threshold = 500;
         for (const IntPair& correspondence: correspondences){
             
             int ref_idx = correspondence.first;
@@ -49,19 +49,16 @@ namespace pr {
             
             
             if (error.dot(error) >threshold) {
-//std::cout<<"Outlier error: "<< error.dot(error) << " between point " <<(observed_points[obs_idx]).transpose()<<"("<< obs_idx << ") and " << (reference_points[ref_idx]).transpose()<<"("<<ref_idx <<")"<< std::endl;
                 count++;
 
             }
             
             else {
                 chi+= error.dot(error);
-              //  std::cout<<error.dot(error)<<std::endl;
             }
      
             
         }
-        //std::cout<<"Error: "<< chi<< " With "<< count<<" pairs with chi greater than "<< threshold << std::endl;
         return chi;
         
         
@@ -70,7 +67,7 @@ namespace pr {
     
 
     
-    void P3PSolver::errorAndJacobian(Eigen::Vector2f& error,
+    void Solver::errorAndJacobian(Eigen::Vector2f& error,
                                      Matrix2_3f& jacobian,
                                      const Eigen::Vector2f& observed_point,
                                      const Eigen::Vector2f& reference_point){
@@ -87,13 +84,12 @@ namespace pr {
         
     }
 
-  void P3PSolver::linearize(const IntPairVector& correspondences, bool keep_outliers){
+  void Solver::linearize(const IntPairVector& correspondences, bool keep_outliers){
     _H.setZero();
     _b.setZero();
     _num_inliers=0;
     _chi_inliers=0;
     _chi_outliers=0;
-    //  std::cout<<"linearize"<<std::endl;
     for (const IntPair& correspondence: correspondences){
       Eigen::Vector2f e;
       Matrix2_3f J;
@@ -106,7 +102,7 @@ namespace pr {
         
 
       float chi=e.dot(e);
-       // std::cout<<chi << " " ;
+
 
       float lambda=1;
       bool is_inlier=true;
@@ -124,10 +120,10 @@ namespace pr {
 	_b+=J.transpose()*e*lambda;
       }
     }
-              //std::cout<<std::endl;
+
   }
 
-  bool P3PSolver::oneRound(const IntPairVector& correspondences, bool keep_outliers){
+  bool Solver::oneRound(const IntPairVector& correspondences, bool keep_outliers){
     using namespace std;
     linearize(correspondences, keep_outliers);
       _H+=Eigen::Matrix3f::Identity()*_damping;
@@ -142,11 +138,9 @@ namespace pr {
       if ((_last_chi2!=0)&&(_last_chi2<_chi_inliers)){
           
           if (_last_chi1<_last_chi2){
-       //  std::cout<<"STOP with "<< _last_chi1<<std::endl;
               X = oldX_1;
           }
           else {
-           //   std::cout<<"STOP with "<< _last_chi2<<std::endl;
               X = oldX_2;
           }
           return false;
@@ -154,7 +148,6 @@ namespace pr {
       
       if ((std::abs(_last_chi1 - _chi_inliers)<0.15)&&(std::abs(_last_chi2 - _chi_inliers)<0.15)&&(std::abs(_last_chi1 - _last_chi2)<0.15)){
           
-        //  std::cout<<"Convergence stop with "<< _chi_inliers<<std::endl;
           return false;
       }
       else {
@@ -168,7 +161,7 @@ namespace pr {
     
 
     
-    Eigen::Matrix3f P3PSolver::getX(){
+    Eigen::Matrix3f Solver::getX(){
         return X;
     }
 }

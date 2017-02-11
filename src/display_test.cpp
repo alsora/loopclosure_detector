@@ -1,5 +1,5 @@
 #include "defs.h"
-#include "display.h"
+#include "database.h"
 #include "utils.h"
 #include "points_utils.h"
 
@@ -12,8 +12,8 @@ using namespace std;
 using namespace pr;
 
 const char* banner[]={
-  "display test",
-  "represent a laser scan.",
+  "Display test",
+  "Browse through the laser scans using A and D.",
   0
 };
 
@@ -21,9 +21,7 @@ const char* banner[]={
 int main (int argc, char** argv) {
     printBanner(banner);
     
-    //ifstream inputFile("../prova.txt");
-    ifstream inputFile("../03-2DLoopDetector/loop-detector-2d.txt");
-    ifstream g2oFile;
+    ifstream inputFile("../loop-detector-2d.txt");
     string line;
     string line2;
     ScanDatabase database(5);
@@ -40,12 +38,11 @@ int main (int argc, char** argv) {
 
         
     }
-    //m1 non usata
-    map<int, vector<float>> m1 = database.getScanList();
+
    map<int,Vector2fVector> m2 = database.getScanDrawings();
     
     
-    RGBImage shown_image(400,700);
+    RGBImage shown_image(400,400);
     
     char key=0;
     int t = 0;
@@ -57,10 +54,8 @@ int main (int argc, char** argv) {
         Vector2fVector new_points = m2.find(sequence_list[t])->second;
         Vector2fVector display_points = database.pointsToDisplay(new_points);
         drawPoints(shown_image,display_points, cv::Scalar(255,0,0),1);
-                cv::imshow("camera_test", shown_image);
-        //for (Eigen::Vector2f vec: new_points){
-          //  cout<< vec.x() << " " <<vec.y() << endl;
-       // }
+                cv::imshow("display_test", shown_image);
+
     key=cv::waitKey(0);
         switch(key) {
             case 'd': t = min (t+1, scan_count-1); break;

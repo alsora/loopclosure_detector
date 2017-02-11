@@ -6,12 +6,12 @@
 
 namespace pr {
 
-class P3PSolver{
+class Solver{
   public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
 
     //! ctor
-    P3PSolver();
+    Solver();
 
     //! init method, call it at the beginning
     void init(

@@ -13,14 +13,13 @@ SET(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O3 -DNDEBUG")
 SET(CMAKE_BUILD_TYPE Release)
 
 # Find Eigen3
-# FIND_PACKAGE(Eigen3 REQUIRED)
-include_directories(include $ENV{EIGEN3_INCLUDE_DIR})
+FIND_PACKAGE(Eigen3 REQUIRED)
+INCLUDE_DIRECTORIES($ENV{EIGEN3_INCLUDE_DIR})
 
 # Find Opencv
 FIND_PACKAGE(OpenCV  REQUIRED)
 INCLUDE_DIRECTORIES(${OpenCV_INCLUDE_DIRS})
-#include_directories(include $ENV{OpenCV_INCLUDE_DIRS})
-MESSAGE( STATUS "variable is: " ${OpenCV_INCLUDE_DIRS} )
+
 
 
 
@@ -28,7 +27,7 @@ add_executable(
   display_test
   src/utils.cpp
   src/points_utils.cpp
-  src/display.cpp
+  src/database.cpp
   src/display_test.cpp
   )
 
@@ -39,35 +38,34 @@ target_link_libraries(
 
 
 add_executable(
-  correct_alignment_test
+  alignment_test
   src/utils.cpp
   src/points_utils.cpp
-  src/display.cpp
-  src/p3p_solver.cpp
+  src/database.cpp
+  src/solver.cpp
 src/distance_map_correspondence_finder.cpp
 src/distance_map.cpp
-src/linear_relaxation_solver.cpp
-  src/correct_alignment_test.cpp
+  src/alignment_test.cpp
 )
 
 target_link_libraries(
-  correct_alignment_test
+  alignment_test
   ${OpenCV_LIBS} 
 )
 
 add_executable(
-  closure_finder_test
+  closure_finder
   src/utils.cpp
   src/points_utils.cpp
-  src/display.cpp
-  src/p3p_solver.cpp
+  src/database.cpp
+  src/solver.cpp
 src/distance_map_correspondence_finder.cpp
 src/distance_map.cpp
-  src/closure_finder_test.cpp
+  src/closure_finder.cpp
 )
 
 target_link_libraries(
-  closure_finder_test
+  closure_finder
   ${OpenCV_LIBS} 
 )
 

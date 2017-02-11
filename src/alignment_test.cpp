@@ -1,9 +1,8 @@
 #include "defs.h"
-#include "display.h"
+#include "database.h"
 #include "utils.h"
 #include "points_utils.h"
-#include "p3p_solver.h"
-#include "linear_relaxation_solver.h"
+#include "solver.h"
 #include "distance_map_correspondence_finder.h"
 
 
@@ -22,18 +21,16 @@ const char* banner[]={
     "Spacebar for 1 alignement round, enter for complete alignement, x to display the actual best transformation.",
     0
 };
-
-
 int main (int argc, char** argv) {
     printBanner(banner);
     
-
-
+    
+    
     if ((argc == 2)||(argc > 3)){
         cerr<< "You have provided "<< argc - 1<<" input parameter! Provide nothing to compare the 2 default scans or the 2 ids of the scans you want to compare. The default scans will be compared in this run."<<endl;}
     
-    ifstream inputFile("../03-2DLoopDetector/loop-detector-2d.txt");
-    string odomFile("../03-2DLoopDetector/trajectoryLaser.g2o");
+    ifstream inputFile("../loop-detector-2d.txt");
+    string odomFile("../trajectoryLaser.g2o");
     string line;
     int threshold = 5;
     ScanDatabase database(threshold);
@@ -86,12 +83,12 @@ int main (int argc, char** argv) {
     
     
     //From 30690 to 33709...TOT 2413 scan
-
+    
     int id_1 = 30690;
     int id_2 = 33709;
     
     if (argc == 3){
-    
+        
         int x;
         
         istringstream ss1(argv[1]);
@@ -106,23 +103,23 @@ int main (int argc, char** argv) {
     }
     
     //Uncomment these 2 lines if you want to specify ids as indices in the storage vector
-   //id_1 = sequence_list[id_1];
-   //id_2 = sequence_list[id_2];
-
+    //id_1 = sequence_list[id_1];
+    //id_2 = sequence_list[id_2];
+    
     Vector2fVector reference_points = m2.find(id_1)->second;
     Vector2fVector scan_points = m2.find(id_2)->second;
-
+    
     
     
     
     Vector2fVector display_reference = database.pointsToDisplay(reference_points);
     
     
-    P3PSolver solver;
+    Solver solver;
     
     Eigen::Vector3f ref_pose = (m3.find(id_1))->second;
     Eigen::Vector3f actual_pose = (m3.find(id_2))->second;
-
+    
     
     Eigen::Matrix3f guess = vec2mat(ref_pose).inverse() * vec2mat(actual_pose);
     
@@ -158,7 +155,7 @@ int main (int argc, char** argv) {
     bool iterate = true;
     char key=0;
     const char ESC_key=27;
-
+    
     while (key!=ESC_key) {
         shown_image=cv::Vec3b(255,255,255);
         
@@ -180,11 +177,11 @@ int main (int argc, char** argv) {
                             display_reference,
                             display_corrected,
                             correspondence_finder.correspondences(), cv::Scalar(0,0,255));
-
-       float chi = solver.computeError(correspondence_finder.correspondences(),scan_points,reference_points );
+        
+        float chi = solver.computeError(correspondence_finder.correspondences(),scan_points,reference_points );
         cout<<"Error: " << chi << " Mean Error: "<<chi/correspondence_finder.correspondences().size()<< " Matched points ratio: "<< 100*correspondence_finder.correspondences().size()/scan_points.size()<<"%"<< endl;
         
-        cv::imshow("camera_test", shown_image);
+        cv::imshow("alignment_test", shown_image);
         key=cv::waitKey(0);
         switch(key) {
                 
@@ -200,14 +197,14 @@ int main (int argc, char** argv) {
                         new_points.push_back(new_point);
                         
                     }
-                      corrected_points = new_points;
+                    corrected_points = new_points;
                     Vector2fVector display_corrected = database.pointsToDisplay(corrected_points);
                     correspondence_finder.compute(display_corrected);
                     
                     iterate = solver.oneRound(correspondence_finder.correspondences(),false);
-
+                    
                     if (iterate){
-
+                        
                         solver.computeError(correspondence_finder.correspondences(),scan_points,reference_points );}
                     
                 }

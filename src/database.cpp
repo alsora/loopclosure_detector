@@ -1,4 +1,4 @@
-#include "display.h"
+#include "database.h"
 #include <fstream>
 namespace pr {
     ScanDatabase::ScanDatabase(int threshold){

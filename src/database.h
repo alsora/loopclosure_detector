@@ -7,7 +7,7 @@ namespace pr {
   class ScanDatabase{
   public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
-    //~ ctor, initialized a camera according to the arguments
+
     ScanDatabase (int threshold);
           ScanDatabase ();
     
