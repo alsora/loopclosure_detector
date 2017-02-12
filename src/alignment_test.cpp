@@ -84,8 +84,8 @@ int main (int argc, char** argv) {
     
     //From 30690 to 33709...TOT 2413 scan
     
-    int id_1 = 30690;
-    int id_2 = 33709;
+    int id_1 = 33033;
+    int id_2 = 31318;
     
     if (argc == 3){
         
@@ -103,8 +103,8 @@ int main (int argc, char** argv) {
     }
     
     //Uncomment these 2 lines if you want to specify ids as indices in the storage vector
-    //id_1 = sequence_list[id_1];
-    //id_2 = sequence_list[id_2];
+    id_1 = sequence_list[id_1];
+    id_2 = sequence_list[id_2];
     
     Vector2fVector reference_points = m2.find(id_1)->second;
     Vector2fVector scan_points = m2.find(id_2)->second;
@@ -123,6 +123,7 @@ int main (int argc, char** argv) {
     
     Eigen::Matrix3f guess = vec2mat(ref_pose).inverse() * vec2mat(actual_pose);
     
+    
     solver.init(reference_points, scan_points,guess);
     
     cout<<"Initial Guess Vector: "<<mat2vec(guess).transpose()<<endl;
@@ -139,7 +140,7 @@ int main (int argc, char** argv) {
     DistanceMapCorrespondenceFinder correspondence_finder;
     int rows = 500;
     int cols = 500;
-    float max_distance=25;
+    float max_distance=15;
     correspondence_finder.init(display_reference,
                                rows,
                                cols,
@@ -203,9 +204,11 @@ int main (int argc, char** argv) {
                     
                     iterate = solver.oneRound(correspondence_finder.correspondences(),false);
                     
-                    if (iterate){
+                    if (!iterate){
                         
-                        solver.computeError(correspondence_finder.correspondences(),scan_points,reference_points );}
+
+                        
+}
                     
                 }
                 

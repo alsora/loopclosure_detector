@@ -11,7 +11,7 @@ namespace pr {
     _damping=1;
     _min_num_inliers=0;
     _num_inliers=0;
-    _kernel_thereshold=10;
+    _kernel_thereshold=2;
   }
 
   void Solver::init(
@@ -36,7 +36,7 @@ namespace pr {
 
         float chi = 0;
         int count = 0;
-        float threshold = 500;
+        float threshold = Solver::_kernel_thereshold;
         for (const IntPair& correspondence: correspondences){
             
             int ref_idx = correspondence.first;

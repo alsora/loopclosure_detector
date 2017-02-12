@@ -19,12 +19,12 @@ using namespace pr;
 
 int main (int argc, char** argv) {
     
-
+    
     ifstream inputFile("../loop-detector-2d.txt");
     string odomFile("../trajectoryLaser.g2o");
     
     
-   
+    
     int threshold = 5;
     ScanDatabase database(threshold);
     vector<int> sequence_list;
@@ -35,7 +35,7 @@ int main (int argc, char** argv) {
     //Get image matrices from each scan line
     while (getline(inputFile, line))
     {
-       int seq_number = database.extractData(line);
+        int seq_number = database.extractData(line);
         sequence_list.push_back(seq_number);
         database.pointsFromScan(seq_number);
         scan_count++;
@@ -43,9 +43,29 @@ int main (int argc, char** argv) {
     
     database.extractOdometry(odomFile);
     
-
-   map<int,Vector2fVector> cloudsMap = database.getScanDrawings();
+    
+    map<int,Vector2fVector> cloudsMap = database.getScanDrawings();
     map<int, Eigen::Vector3f> posesMap = database.getOdometryList();
+    
+    vector<vector<int>> groupedScans;
+    vector<int> island;
+    map<int, Eigen::Vector3f>::const_iterator it;
+    
+    for (int iD : sequence_list){
+        it = posesMap.find(iD);
+        if (it!= posesMap.end()){
+            if (iD!=sequence_list[0]){
+                groupedScans.push_back(island);  }
+            island.clear();
+            island.push_back(iD);
+        }
+        
+        else {
+            island.push_back(iD);
+        }
+    }
+    
+    
     
     Eigen::Vector3f lastPose = posesMap.begin()->second; //initialize at first known pose
     
@@ -57,22 +77,22 @@ int main (int argc, char** argv) {
             posesMap.insert(pair<int,Eigen::Vector3f>(iD, lastPose));
         }
     }
-
-
-
+    
+    
+    
     
     //Conditions for being considered a candidate closure
-    float errorThreshold = 0.015;    //Maximum error between reference and target
+    float errorThreshold = 2.5;    //Maximum error between reference and target
     int correspondencesThreshold = 400;     //Minimum number of corresponding points between reference and target
     
-    
+    float islandThrehsold = 25;
     Solver solver;
     
     DistanceMapCorrespondenceFinder correspondence_finder;
-
+    
     int rows = 400;     //Dimensions for the distance map
     int cols = 400;
-
+    
     float max_distance=80;
     
     
@@ -97,48 +117,68 @@ int main (int argc, char** argv) {
     float best_chi;
     float best_target;
     Eigen::Vector3f best_transf;
-
+    
+    Eigen::Matrix3f transf;
+    float chi;
+    
+    
+    float currentIslandChi;
+    Eigen::Matrix3f currentIslandTransf;
+    int currentIslandFirstID;
+    float bestChi;
+    Eigen::Matrix3f bestTransf;
+    int bestID;
+    float bestIslandChi;
+    Eigen::Matrix3f bestIslandTransf;
+    int bestIslandFirstID;
+    
     ofstream output_file;
     output_file.open("candidate_closures.txt");
     
-    for (int j = 0; j<sequence_list.size();j++){ //Loop over all the scan (they will be considered as reference)
-        best_chi = errorThreshold;
-         int referenceID = sequence_list[j];
-        float actualX = (posesMap.find(referenceID)->second)(0);
-         cout<<referenceID<<endl;
-        
+    
+    for (int referenceID : sequence_list){
+    bestChi = errorThreshold + 1;
+    float actualX = (posesMap.find(referenceID)->second)(0);
+    cout<<referenceID<<endl;
         if (!searchClosure){    //I start looking for closures when the robot returns on its path
             
             searchClosure = (lastX > actualX);
             lastX = actualX;
-            inversionScan = j;
+            inversionScan = referenceID;
         }
-       reference_points = cloudsMap.find(referenceID)->second;
-       display_reference = database.pointsToDisplay(reference_points);
-        
-        if (searchClosure){
-            output_file<<"SCAN: "<< referenceID <<endl;
-            correspondence_finder.init(display_reference, //Init is necessary 1 time for each reference
-                                       rows,
-                                       cols,
-                                       max_distance);
-            
-            for (int i=0; i<inversionScan;i++){ //Loop over all the scans preceeding motion inversion
-                int targetID = sequence_list[i];
-                if (abs(actualX - (posesMap.find(targetID)->second)(0))<threshold){
-                
-            iterate = true;
-                
-                ref_pose = posesMap.find(referenceID)->second;//Computation of current initial guess
-                target_pose = posesMap.find(targetID)->second;
 
-                guess = vec2mat(ref_pose).inverse() * vec2mat(target_pose);
+           if (searchClosure){
+    reference_points = cloudsMap.find(referenceID)->second;
+    display_reference = database.pointsToDisplay(reference_points);
+    ref_pose = posesMap.find(referenceID)->second;//Computation of current initial guess
+    
+
+    correspondence_finder.init(display_reference, //Init is necessary 1 time for each reference
+                               rows,
+                               cols,
+                               max_distance);
+    
+    for (vector<int> island : groupedScans){
+        bool first = true;
+        for (int targetID : island){
+            //int targetID = sequence_list[i];
+            target_pose = posesMap.find(targetID)->second;
+            float dista =abs(actualX - target_pose(0));
             
-                               
+            if ((dista<threshold)&&(targetID < inversionScan)){
+                
+                iterate = true;
+                
+                
+                
+                
+                guess = vec2mat(ref_pose).inverse() * vec2mat(target_pose);
+                
+                
                 target_points = cloudsMap.find(targetID)->second;
                 
                 solver.init(reference_points, target_points,guess); //Initialization of the solver, 1 time for each target
-                               
+                
                 while (iterate){
                     
                     new_points.clear();
@@ -150,35 +190,65 @@ int main (int argc, char** argv) {
                         
                     }
                     corrected_points = new_points; //Adjusted points according to current guess
-                   display_corrected = database.pointsToDisplay(corrected_points);
+                    display_corrected = database.pointsToDisplay(corrected_points);
                     correspondence_finder.compute(display_corrected);
-
+                    
                     iterate = solver.oneRound(correspondence_finder.correspondences(),false);
+                    
+                }
                 
-                }
-
-                float chi = solver.computeError(correspondence_finder.correspondences(),target_points,reference_points );
+                new_points.clear();
+                state = solver.getX();
+                for (Eigen::Vector2f point : target_points){
                     
-                  /*  if ((chi/correspondence_finder.correspondences().size() < best_chi)&&(correspondence_finder.correspondences().size()>=correspondencesThreshold)){
-                        best_chi = chi/correspondence_finder.correspondences().size();
-                        best_target = targetID;
-                        best_transf = mat2vec(solver.getX());
-                    }*/
+                    new_point = state.block<2,2>(0,0)*point + state.block<2,1>(0,2);
+                    new_points.push_back(new_point);
                     
-                if ((chi/correspondence_finder.correspondences().size()  <= errorThreshold)&&(correspondence_finder.correspondences().size()>=correspondencesThreshold)){
-                    output_file<<"Candidate: "<< targetID << " with error " << chi/target_points.size() << " and transformation "<< mat2vec(solver.getX()).transpose() <<endl;
-
                 }
+                corrected_points = new_points; //Adjusted points according to current guess
+                display_corrected = database.pointsToDisplay(corrected_points);
+                correspondence_finder.compute(display_corrected);
+                
+                
+                chi = solver.computeError(correspondence_finder.correspondences(),target_points,reference_points );
+                
+                
+                if (first){
+                    
+                    first = false;
+                    if ((chi >= islandThrehsold)||(correspondence_finder.correspondences().size()<correspondencesThreshold)){
+                        break;  }
+                    
+                    else{
+                        currentIslandChi = chi;
+                        currentIslandTransf = state;
+                        currentIslandFirstID = targetID;
+                    }
                 }
+                
+                if ((chi < bestChi)&&(correspondence_finder.correspondences().size()>=correspondencesThreshold)){
+                    bestChi = chi;
+                    bestTransf = state;
+                    bestID = targetID;
+                    bestIslandChi = currentIslandChi;
+                    bestIslandTransf = currentIslandTransf;
+                    bestIslandFirstID = currentIslandFirstID;
+                }
+                
+                
+                
                 
             }
-            
-         //   if (best_chi!=errorThreshold){
-          //      output_file<<"SCAN "<< referenceID<< " BEST CANDIDATE: "<< best_target << " with mean error " << best_chi << " and transformation "<< best_transf.transpose() <<endl;
-           // }
         }
-        
-        
-        }
-
+    }
+    
+    
+    if ((bestChi <= errorThreshold)){
+        output_file<<"SCAN: "<<referenceID<<endl;
+        output_file<<"BestIsland: "<< bestIslandFirstID << " with error " << bestIslandChi << " and transformation "<< mat2vec(bestIslandTransf).transpose() <<endl;
+        output_file<<"BestCandidate: "<< bestID << " with error " << bestChi << " and transformation "<< mat2vec(bestTransf).transpose() <<endl;
+    }
+    }
+    }
+    
 }
