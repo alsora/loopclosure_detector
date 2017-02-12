@@ -92,19 +92,23 @@ int main (int argc, char** argv) {
         int x;
         
         istringstream ss1(argv[1]);
-        if (!(ss1 >> x))
-            cerr << "Invalid number " << argv[1] << endl;
-        id_1 = x;
+        if (!(ss1 >> x)){
+            cerr << "Invalid number " << argv[1] << endl; }
+        else{
+            id_1 = x; }
         
         istringstream ss2(argv[2]);
-        if (!(ss2 >> x))
-            cerr << "Invalid number " << argv[1] << endl;
-        id_2 = x;
+        if (!(ss2 >> x)){
+            cerr << "Invalid number " << argv[1] << endl; }
+        else {
+            id_2 = x; }
+        
+        if ((id_1 < sequence_list[0] ) && (id_1 < sequence_list.size()) && (id_2 < sequence_list[0] ) && (id_2 < sequence_list.size()) ) {
+            id_1 = sequence_list[id_1];
+            id_2 = sequence_list[id_2];
+        }
+        
     }
-    
-    //Uncomment these 2 lines if you want to specify ids as indices in the storage vector
-    id_1 = sequence_list[id_1];
-    id_2 = sequence_list[id_2];
     
     Vector2fVector reference_points = m2.find(id_1)->second;
     Vector2fVector scan_points = m2.find(id_2)->second;
