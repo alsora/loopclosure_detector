@@ -84,8 +84,8 @@ int main (int argc, char** argv) {
     
     //From 30690 to 33709...TOT 2413 scan
     
-    int id_1 = 33033;
-    int id_2 = 31318;
+    int id_1 = 32605;
+    int id_2 = 32555;
     
     if (argc == 3){
         
@@ -209,7 +209,15 @@ int main (int argc, char** argv) {
                     iterate = solver.oneRound(correspondence_finder.correspondences(),false);
                     
                     if (!iterate){
-                        
+                        Vector2fVector new_points;
+                        Eigen::Matrix3f mat = solver.getX();
+                        for (Eigen::Vector2f point : scan_points){
+                            Eigen::Vector2f new_point;
+                            new_point = mat.block<2,2>(0,0)*point + mat.block<2,1>(0,2);
+                            new_points.push_back(new_point);
+                            
+                        }
+                        corrected_points = new_points;
 
                         
 }

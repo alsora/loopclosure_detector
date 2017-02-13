@@ -8,41 +8,41 @@ namespace pr {
     ScanDatabase::ScanDatabase(){
     }
     
+    
     int ScanDatabase::extractData(const std::string line){
-    std::string tag_n, topic_n, frame_id_n;
-      int sequence_number_n;
-      double timing_count_n;
-      int odom1_n, odom2_n, odom3_n,odom4_n,odom5_n,odom6_n,odom7_n, odom8_n;
-      float min_range_n, max_range_n, min_angle_n, max_angle_n, angle_increment_n, time_increment_n, scan_time_n;
-      int scan_size_n;
+        std::string tag_n, topic_n, frame_id_n;
+        int sequence_number_n;
+        double timing_count_n;
+        int odom1_n, odom2_n, odom3_n,odom4_n,odom5_n,odom6_n,odom7_n, odom8_n;
+        float min_range_n, max_range_n, min_angle_n, max_angle_n, angle_increment_n, time_increment_n, scan_time_n;
+        int scan_size_n;
       
-    std::istringstream iss(line);
+        std::istringstream iss(line);
       
       
-      iss >> tag_n >> topic_n >> frame_id_n>> sequence_number_n >> timing_count_n >>
-      odom1_n >> odom2_n >> odom3_n >> odom4_n >> odom5_n >> odom6_n >> odom7_n >> odom8_n >> min_range_n >> max_range_n>> min_angle_n >> max_angle_n >> angle_increment_n >> time_increment_n >> scan_time_n >> scan_size_n;
+        iss >> tag_n >> topic_n >> frame_id_n>> sequence_number_n >> timing_count_n >>
+        odom1_n >> odom2_n >> odom3_n >> odom4_n >> odom5_n >> odom6_n >> odom7_n >> odom8_n >> min_range_n >> max_range_n>> min_angle_n >> max_angle_n >> angle_increment_n >> time_increment_n >> scan_time_n >> scan_size_n;
       
-      if (first){
-          tag = tag_n;
-          topic = topic_n;
-          frame_id = frame_id_n;
-          min_range = min_range_n;
-          max_range = max_range_n;
-          min_angle = min_angle_n;
-          max_angle = max_angle_n;
-          angle_increment = angle_increment_n;
-          scan_size = scan_size_n;
+        if (first){
+            tag = tag_n;
+            topic = topic_n;
+            frame_id = frame_id_n;
+            min_range = min_range_n;
+            max_range = max_range_n;
+            min_angle = min_angle_n;
+            max_angle = max_angle_n;
+            angle_increment = angle_increment_n;
+            scan_size = scan_size_n;
           
-          first = false;
-          
-      }
+            first = false;
+            }
       
-    std::vector<float> ranges(scan_size);
+        std::vector<float> ranges(scan_size);
       
       
-      for (int i=0; i<scan_size; i++){
-          iss >> ranges[i];
-      }
+        for (int i=0; i<scan_size; i++){
+            iss >> ranges[i];
+        }
       
         scan_list.insert(std::pair<int, std::vector<float>>(sequence_number_n, ranges));
 
@@ -60,19 +60,17 @@ namespace pr {
             return false;
         }
         else{
-        int count = 0;
+            int count = 0;
             Vector2fVector drawing;
-        for (auto &val : it->second){
-            if (val<_threshold){
-            float angle = min_angle + count*angle_increment;
-            float val1 =  val*cos(angle);
-            float val2 = val*sin(angle);
-            //std::cout <<val << " " << val1 << " " << val2 << std::endl;
-            Eigen::Vector2f vec(val1,val2);
-                drawing.push_back(vec);}
-            count ++;
-            
-        }
+            for (auto &val : it->second){
+                if (val<_threshold){
+                    float angle = min_angle + count*angle_increment;
+                    float val1 =  val*cos(angle);
+                    float val2 = val*sin(angle);
+                    Eigen::Vector2f vec(val1,val2);
+                    drawing.push_back(vec);}
+                count ++;
+                }
             scan_drawings.insert(std::pair<int,Vector2fVector>(sequence_number, drawing));
             return true;
         }
