@@ -113,7 +113,7 @@ int main (int argc, char** argv) {
     Vector2fVector reference_points = m2.find(id_1)->second;
     Vector2fVector scan_points = m2.find(id_2)->second;
     
-    
+
     
     
     Vector2fVector display_reference = database.pointsToDisplay(reference_points);
@@ -131,11 +131,16 @@ int main (int argc, char** argv) {
     solver.init(reference_points, scan_points,guess);
     
     cout<<"Initial Guess Vector: "<<mat2vec(guess).transpose()<<endl;
-    
+    int conta = 0;
     Vector2fVector corrected_points;
     for (Eigen::Vector2f vec: scan_points){
+
+        
         vec = guess.block<2,2>(0,0)*vec + guess.block<2,1>(0,2);
         corrected_points.push_back(vec);
+        
+
+
     }
     
     
@@ -149,11 +154,11 @@ int main (int argc, char** argv) {
                                rows,
                                cols,
                                max_distance);
-    correspondence_finder.compute(corrected_points);
+    //correspondence_finder.compute(corrected_points);
     
     
     
-    
+
     
     RGBImage shown_image(rows,cols);
     
@@ -168,7 +173,9 @@ int main (int argc, char** argv) {
         Vector2fVector display_scan = database.pointsToDisplay(scan_points);
         
         correspondence_finder.compute(display_corrected);
-        
+
+
+            cout<< correspondence_finder.correspondences().size() << " " <<reference_points.size() << " " <<scan_points.size()<<endl;
         
         drawPoints(shown_image,display_reference, cv::Scalar(255,0,0),1);
         
@@ -184,14 +191,14 @@ int main (int argc, char** argv) {
                             correspondence_finder.correspondences(), cv::Scalar(0,0,255));
         
         float chi = solver.computeError(correspondence_finder.correspondences(),scan_points,reference_points );
-        cout<<"Error: " << chi << " Mean Error: "<<chi/correspondence_finder.correspondences().size()<< " Matched points ratio: "<< 100*correspondence_finder.correspondences().size()/scan_points.size()<<"%"<< endl;
+        cout<<"Error: " << chi << " Mean Error: "<<chi/correspondence_finder.correspondences().size()<< " Matched points ratio: "<< 100*correspondence_finder.correspondences().size()/reference_points.size()<<"%"<< endl;
         
         cv::imshow("alignment_test", shown_image);
         key=cv::waitKey(0);
         switch(key) {
                 
             case 13 : {//enter
-                correspondence_finder.compute(display_corrected);
+                //correspondence_finder.compute(display_corrected);
                 
                 while (iterate){
                     Vector2fVector new_points;

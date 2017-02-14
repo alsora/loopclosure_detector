@@ -1,0 +1,435 @@
+SCAN: 32629
+BestIsland: 32522 with error 0.407465 and transformation -0.00551633   0.0152993     1.04838
+BestCandidate: 32537 with error 0.20534 and transformation -0.0059769  0.0108977   0.912665
+SCAN: 32630
+BestIsland: 32522 with error 0.275136 and transformation -0.00656125  0.00964068     1.05909
+BestCandidate: 32539 with error 0.273274 and transformation -0.00529043  0.00830282    0.906565
+SCAN: 32632
+BestIsland: 32522 with error 0.487757 and transformation -0.00500889  0.00644654     1.08357
+BestCandidate: 32540 with error 0.490204 and transformation -0.00435916   0.0040194    0.920695
+SCAN: 32633
+BestIsland: 32522 with error 0.811481 and transformation -0.000223812  -0.00355891      1.09572
+BestCandidate: 32534 with error 0.735084 and transformation 1.61803e-05 -0.00543041    0.985327
+SCAN: 32634
+BestIsland: 32522 with error 1.0457 and transformation 0.00245561 -0.0109256    1.10819
+BestCandidate: 32548 with error 1.10088 and transformation -0.000978378   -0.0109595     0.867775
+SCAN: 32635
+BestIsland: 32522 with error 1.52148 and transformation 0.00106876  -0.014985    1.12012
+BestCandidate: 32537 with error 1.36978 and transformation 0.00257923  -0.017322   0.983464
+SCAN: 32637
+BestIsland: 32522 with error 1.74761 and transformation 0.00556797 -0.0260635    1.14428
+BestCandidate: 32555 with error 1.61443 and transformation -0.00240749   -0.016535    0.839692
+SCAN: 32638
+BestIsland: 32522 with error 1.74001 and transformation 0.00554637 -0.0190364    1.15363
+BestCandidate: 32537 with error 1.40714 and transformation 0.00307558 -0.0183136    1.01586
+SCAN: 32639
+BestIsland: 32522 with error 1.79457 and transformation 0.00311199 -0.0212231     1.1649
+BestCandidate: 32572 with error 1.72941 and transformation -0.00597753 -0.00752206    0.703564
+SCAN: 32640
+BestIsland: 32522 with error 1.78919 and transformation  0.0072922 -0.0178357    1.17533
+BestCandidate: 32575 with error 1.53583 and transformation -0.00427928 -0.00236023    0.685291
+SCAN: 32642
+BestIsland: 32522 with error 1.85682 and transformation 0.00848147 -0.0202647    1.19766
+BestCandidate: 32562 with error 1.53016 and transformation 0.00307232 -0.0109357   0.824679
+SCAN: 32643
+BestIsland: 32522 with error 2.11636 and transformation  0.0102233 -0.0250991    1.20873
+BestCandidate: 32593 with error 1.91796 and transformation -0.00209461  -0.0143987    0.550047
+SCAN: 32644
+BestIsland: 32522 with error 1.90935 and transformation  0.0100187 -0.0228951    1.21742
+BestCandidate: 32552 with error 1.83605 and transformation   0.008604 -0.0211671   0.938144
+SCAN: 32645
+BestIsland: 32522 with error 2.12338 and transformation  0.0142056 -0.0212261    1.22832
+BestCandidate: 32562 with error 1.69668 and transformation 0.00341184 -0.0172374   0.858912
+SCAN: 32647
+BestIsland: 32522 with error 1.95691 and transformation  0.0162829 -0.0147671    1.24678
+BestCandidate: 32545 with error 1.7759 and transformation  0.0107665 -0.0153649    1.03462
+SCAN: 32648
+BestIsland: 32522 with error 2.06002 and transformation  0.0127096 -0.0175516    1.25844
+BestCandidate: 32603 with error 1.84892 and transformation   0.0032081 -0.00949416     0.49568
+SCAN: 32649
+BestIsland: 32522 with error 1.67531 and transformation   0.0138428 -0.00903505     1.26751
+BestCandidate: 32545 with error 1.71536 and transformation 0.0126966 -0.011246    1.0537
+SCAN: 32954
+BestIsland: 31328 with error 2.16367 and transformation   4.66455 0.0301671  -3.05865
+BestCandidate: 31344 with error 1.95051 and transformation  4.65962 0.022248 -3.06001
+SCAN: 32955
+BestIsland: 31328 with error 2.05381 and transformation   4.65549 0.0249752  -3.06041
+BestCandidate: 31343 with error 1.89851 and transformation   4.64508 0.0191548  -3.06044
+SCAN: 32965
+BestIsland: 31313 with error 2.11836 and transformation    4.6595 0.0304113  -3.05824
+BestCandidate: 31325 with error 1.80569 and transformation   4.65876 0.0241747  -3.06095
+SCAN: 32968
+BestIsland: 31345 with error 2.35517 and transformation   4.47868 0.0113533  -3.05951
+BestCandidate: 31358 with error 1.94232 and transformation   4.45481 0.0073042  -3.06063
+SCAN: 32973
+BestIsland: 31345 with error 2.32259 and transformation   4.46993 0.0103808  -3.06237
+BestCandidate: 31358 with error 1.90177 and transformation  4.45814 0.008041 -3.06149
+SCAN: 32974
+BestIsland: 31313 with error 2.28414 and transformation   4.64016 0.0308901   -3.0593
+BestCandidate: 31325 with error 1.94508 and transformation   4.63653 0.0248797  -3.06191
+SCAN: 32975
+BestIsland: 31313 with error 2.16347 and transformation   4.63872 0.0244149  -3.06443
+BestCandidate: 31323 with error 1.86243 and transformation   4.61695 0.0248683  -3.05888
+SCAN: 32977
+BestIsland: 31313 with error 2.12064 and transformation   4.65453 0.0321372  -3.05858
+BestCandidate: 31323 with error 1.85435 and transformation   4.65164 0.0254124   -3.0615
+SCAN: 32978
+BestIsland: 31328 with error 1.91859 and transformation    4.5526 0.0239542  -3.05996
+BestCandidate: 31338 with error 1.74312 and transformation   4.54636 0.0216726  -3.05892
+SCAN: 32979
+BestIsland: 31313 with error 2.15615 and transformation    4.6382 0.0384008  -3.05749
+BestCandidate: 31323 with error 1.89645 and transformation    4.6283 0.0366881  -3.05497
+SCAN: 32980
+BestIsland: 31313 with error 2.35577 and transformation   4.57494 0.0349507  -3.05888
+BestCandidate: 31325 with error 1.93535 and transformation   4.56602 0.0283714   -3.0612
+SCAN: 32982
+BestIsland: 31295 with error 2.18616 and transformation    4.6568 0.0411431  -3.06208
+BestCandidate: 31309 with error 1.98508 and transformation   4.64603 0.0343115  -3.06255
+SCAN: 32983
+BestIsland: 31313 with error 2.26433 and transformation   4.55381 0.0343363  -3.05768
+BestCandidate: 31324 with error 1.84777 and transformation   4.54599 0.0288934  -3.05831
+SCAN: 32984
+BestIsland: 31313 with error 2.29152 and transformation   4.54941 0.0337162  -3.05769
+BestCandidate: 31325 with error 1.89264 and transformation    4.5453 0.0277214  -3.05959
+SCAN: 32987
+BestIsland: 31313 with error 2.2222 and transformation   4.54706 0.0354191  -3.05872
+BestCandidate: 31323 with error 1.91601 and transformation   4.54083 0.0339688  -3.05605
+SCAN: 32989
+BestIsland: 31313 with error 2.03242 and transformation   4.54655 0.0333997  -3.06019
+BestCandidate: 31323 with error 1.71709 and transformation   4.54301 0.0267538  -3.06257
+SCAN: 32990
+BestIsland: 31313 with error 1.96778 and transformation   4.54486 0.0372699  -3.05806
+BestCandidate: 31318 with error 1.77267 and transformation   4.54142 0.0339884  -3.05785
+SCAN: 32992
+BestIsland: 31313 with error 2.09629 and transformation  4.54955 0.039831 -3.05778
+BestCandidate: 31325 with error 1.88222 and transformation   4.54096 0.0354073  -3.05958
+SCAN: 32993
+BestIsland: 31313 with error 2.18525 and transformation 4.53778 0.04322 -3.0569
+BestCandidate: 31323 with error 1.89102 and transformation   4.53779 0.0381094  -3.05693
+SCAN: 32994
+BestIsland: 31313 with error 1.96563 and transformation   4.54456 0.0415165  -3.05806
+BestCandidate: 31318 with error 1.71475 and transformation    4.5389 0.0406366  -3.05609
+SCAN: 32995
+BestIsland: 31313 with error 2.03988 and transformation   4.53541 0.0382844  -3.06165
+BestCandidate: 31323 with error 1.74484 and transformation   4.53511 0.0368332  -3.05838
+SCAN: 32998
+BestIsland: 31313 with error 2.20851 and transformation    4.4563 0.0374584   -3.0583
+BestCandidate: 31324 with error 1.86685 and transformation   4.44187 0.0319248  -3.05842
+SCAN: 32999
+BestIsland: 31313 with error 2.24858 and transformation   4.47188 0.0359722  -3.06103
+BestCandidate: 31325 with error 1.82006 and transformation   4.46384 0.0343778  -3.05828
+SCAN: 33000
+BestIsland: 31313 with error 2.37729 and transformation   4.46535 0.0365706   -3.0596
+BestCandidate: 31325 with error 1.9824 and transformation   4.45619 0.0317343  -3.06002
+SCAN: 33002
+BestIsland: 31313 with error 2.27909 and transformation   4.45144 0.0425429  -3.05629
+BestCandidate: 31323 with error 1.92365 and transformation   4.43986 0.0374872  -3.05683
+SCAN: 33004
+BestIsland: 31313 with error 2.05633 and transformation   4.45474 0.0419167  -3.05885
+BestCandidate: 31323 with error 1.72645 and transformation   4.44958 0.0363036  -3.05979
+SCAN: 33005
+BestIsland: 31313 with error 2.09896 and transformation   4.45315 0.0472607  -3.05571
+BestCandidate: 31318 with error 1.80316 and transformation   4.45181 0.0453982  -3.05437
+SCAN: 33007
+BestIsland: 31394 with error 2.00606 and transformation    3.97861 0.00861182   -3.04995
+BestCandidate: 31399 with error 1.85421 and transformation    3.95697 0.00752539   -3.04988
+SCAN: 33008
+BestIsland: 31394 with error 2.19555 and transformation   3.95894 0.0031148  -3.05378
+BestCandidate: 31398 with error 1.82409 and transformation     3.95627 1.65595e-05    -3.05651
+SCAN: 33009
+BestIsland: 31313 with error 2.18588 and transformation   4.43472 0.0439625  -3.05663
+BestCandidate: 31318 with error 1.93062 and transformation    4.4338 0.0410709  -3.05678
+SCAN: 33011
+BestIsland: 31313 with error 2.07796 and transformation   4.45345 0.0468966  -3.05553
+BestCandidate: 31318 with error 1.85379 and transformation  4.45121 0.044119 -3.05532
+SCAN: 33012
+BestIsland: 31313 with error 2.11137 and transformation   4.44413 0.0435421  -3.05851
+BestCandidate: 31318 with error 1.88413 and transformation   4.43831 0.0423569  -3.05611
+SCAN: 33013
+BestIsland: 31313 with error 1.9763 and transformation   4.44286 0.0476321  -3.05517
+BestCandidate: 31318 with error 1.76361 and transformation   4.43995 0.0444711  -3.05491
+SCAN: 33014
+BestIsland: 31313 with error 1.89426 and transformation   4.45139 0.0428964  -3.05706
+BestCandidate: 31318 with error 1.68433 and transformation   4.44518 0.0405022  -3.05661
+SCAN: 33015
+BestIsland: 31362 with error 1.84739 and transformation   4.14667 0.0146061  -3.05722
+BestCandidate: 31373 with error 1.80401 and transformation   4.09567 0.0137031   -3.0484
+SCAN: 33017
+BestIsland: 31394 with error 2.07821 and transformation   3.91529 0.0018123  -3.05092
+BestCandidate: 31402 with error 1.83865 and transformation     3.90385 -0.00482642    -3.05704
+SCAN: 33018
+BestIsland: 31328 with error 2.05957 and transformation     4.301 0.0291573  -3.06027
+BestCandidate: 31338 with error 1.80193 and transformation   4.26086 0.0247937  -3.05867
+SCAN: 33019
+BestIsland: 31328 with error 2.37524 and transformation   4.27854 0.0255618  -3.06073
+BestCandidate: 31338 with error 1.9336 and transformation   4.25492 0.0235041  -3.05796
+SCAN: 33020
+BestIsland: 31378 with error 2.09365 and transformation    3.97554 0.00110024   -3.05321
+BestCandidate: 31385 with error 1.82114 and transformation   3.95063 0.0019545  -3.05083
+SCAN: 33022
+BestIsland: 31378 with error 1.97225 and transformation     3.95848 -0.00232116    -3.05504
+BestCandidate: 31392 with error 1.60998 and transformation     3.94687 -0.00282162    -3.05276
+SCAN: 33023
+BestIsland: 31328 with error 2.23132 and transformation   4.26319 0.0249167  -3.05907
+BestCandidate: 31338 with error 1.77843 and transformation   4.24438 0.0221442  -3.05754
+SCAN: 33024
+BestIsland: 31328 with error 1.97413 and transformation   4.29406 0.0198853  -3.06478
+BestCandidate: 31338 with error 1.78898 and transformation   4.25749 0.0194721  -3.05977
+SCAN: 33025
+BestIsland: 31328 with error 2.11466 and transformation   4.28191 0.0148041  -3.06795
+BestCandidate: 31338 with error 1.7742 and transformation  4.26088 0.012922 -3.06533
+SCAN: 33027
+BestIsland: 31328 with error 2.11006 and transformation   4.26195 0.0204869   -3.0632
+BestCandidate: 31338 with error 1.80051 and transformation   4.24184 0.0200702  -3.05854
+SCAN: 33028
+BestIsland: 31378 with error 1.84457 and transformation     3.95312 -0.00106669    -3.05299
+BestCandidate: 31378 with error 1.84457 and transformation     3.95312 -0.00106669    -3.05299
+SCAN: 33029
+BestIsland: 31362 with error 1.848 and transformation    4.06562 0.00237613   -3.06019
+BestCandidate: 31373 with error 1.71957 and transformation      4.028 0.00230571   -3.05165
+SCAN: 33030
+BestIsland: 31378 with error 1.70481 and transformation     3.95925 -0.00559254    -3.05728
+BestCandidate: 31385 with error 1.66614 and transformation      3.9496 -0.00423776     -3.0557
+SCAN: 33032
+BestIsland: 31328 with error 1.90032 and transformation  4.26624 0.016704 -3.06461
+BestCandidate: 31338 with error 1.75114 and transformation   4.24678 0.0163857  -3.06052
+SCAN: 33033
+BestIsland: 31378 with error 1.72955 and transformation     3.94747 -0.00362293     -3.0531
+BestCandidate: 31378 with error 1.72955 and transformation     3.94747 -0.00362293     -3.0531
+SCAN: 33034
+BestIsland: 31378 with error 1.85698 and transformation     3.95055 -0.00530788    -3.05395
+BestCandidate: 31378 with error 1.85698 and transformation     3.95055 -0.00530788    -3.05395
+SCAN: 33035
+BestIsland: 31378 with error 1.66197 and transformation     3.95123 -0.00779367    -3.05501
+BestCandidate: 31378 with error 1.66197 and transformation     3.95123 -0.00779367    -3.05501
+SCAN: 33037
+BestIsland: 31328 with error 1.93538 and transformation    4.21275 0.00347432    -3.0685
+BestCandidate: 31344 with error 1.76296 and transformation      4.14697 -0.000223053     -3.06623
+SCAN: 33038
+BestIsland: 31328 with error 1.93593 and transformation      4.22845 -0.000832162     -3.07236
+BestCandidate: 31344 with error 1.80734 and transformation     4.15226 -0.00307841    -3.06673
+SCAN: 33039
+BestIsland: 31328 with error 2.47788 and transformation    4.16522 0.00255316    -3.0676
+BestCandidate: 31344 with error 1.84896 and transformation     4.13949 -0.00220873    -3.06665
+SCAN: 33040
+BestIsland: 31362 with error 1.93754 and transformation    3.96638 -0.0124209   -3.06204
+BestCandidate: 31374 with error 1.76599 and transformation    3.94835 -0.0196988   -3.06172
+SCAN: 33042
+BestIsland: 31328 with error 2.21073 and transformation     4.18049 -0.00217596    -3.07186
+BestCandidate: 31338 with error 1.90129 and transformation     4.14016 -0.00145976    -3.06528
+SCAN: 33043
+BestIsland: 31362 with error 2.01275 and transformation    3.97594 -0.0180536    -3.0689
+BestCandidate: 31373 with error 1.78442 and transformation   3.93685 -0.017848  -3.05986
+SCAN: 33044
+BestIsland: 31362 with error 1.91047 and transformation    3.95654 -0.0168309   -3.06463
+BestCandidate: 31374 with error 1.69343 and transformation    3.94653 -0.0248394   -3.06508
+SCAN: 33045
+BestIsland: 31362 with error 1.96766 and transformation    3.94227 -0.0135594   -3.06097
+BestCandidate: 31365 with error 1.78944 and transformation    3.93788 -0.0152988   -3.05904
+SCAN: 33047
+BestIsland: 31328 with error 2.18488 and transformation     4.18259 -0.00447227    -3.07076
+BestCandidate: 31338 with error 1.8529 and transformation     4.15062 -0.00630988     -3.0681
+SCAN: 33048
+BestIsland: 31345 with error 2.11526 and transformation    4.06316 -0.0115251   -3.06756
+BestCandidate: 31360 with error 1.85684 and transformation    4.02123 -0.0158988   -3.06701
+SCAN: 33049
+BestIsland: 31328 with error 2.19373 and transformation     4.15911 -0.00439124     -3.0702
+BestCandidate: 31329 with error 1.84854 and transformation     4.15223 -0.00301038    -3.06917
+SCAN: 33050
+BestIsland: 31362 with error 2.05564 and transformation     3.9423 -0.0176241   -3.06342
+BestCandidate: 31365 with error 1.86792 and transformation    3.9378 -0.019051  -3.06084
+SCAN: 33052
+BestIsland: 31328 with error 1.97806 and transformation     4.10998 -0.00771346    -3.07332
+BestCandidate: 31342 with error 1.82434 and transformation     4.06433 -0.00957199     -3.0684
+SCAN: 33053
+BestIsland: 31328 with error 2.02313 and transformation     4.11843 -0.00509414    -3.07139
+BestCandidate: 31343 with error 1.80556 and transformation    4.06594 -0.0104456   -3.07013
+SCAN: 33054
+BestIsland: 31328 with error 2.43754 and transformation     4.07314 0.000822374    -3.06735
+BestCandidate: 31344 with error 1.93605 and transformation      4.0503 -0.00693692     -3.0693
+SCAN: 33057
+BestIsland: 31345 with error 2.23461 and transformation     4.00035 -0.00481954    -3.06891
+BestCandidate: 31358 with error 1.97727 and transformation     3.95056 -0.00391817    -3.06388
+SCAN: 33088
+BestIsland: 31378 with error 3.04923 and transformation    3.62956 -0.0125699   -3.06332
+BestCandidate: 31379 with error 1.83347 and transformation     3.57105 -0.00310655    -3.05249
+SCAN: 33089
+BestIsland: 31362 with error 1.99041 and transformation    3.65789 0.00208924   -3.05633
+BestCandidate: 31364 with error 1.80564 and transformation     3.64897 0.000697165    -3.05458
+SCAN: 33090
+BestIsland: 31328 with error 2.12293 and transformation   3.86661 0.0111283  -3.06599
+BestCandidate: 31329 with error 1.70997 and transformation   3.85944 0.0111013  -3.06629
+SCAN: 33092
+BestIsland: 31328 with error 2.082 and transformation    3.86921 0.00869125   -3.06891
+BestCandidate: 31329 with error 1.67081 and transformation    3.86175 0.00968484   -3.06789
+SCAN: 33093
+BestIsland: 31328 with error 2.10419 and transformation    3.86026 0.00770684   -3.07036
+BestCandidate: 31329 with error 1.84801 and transformation    3.85943 0.00673433   -3.07161
+SCAN: 33094
+BestIsland: 31328 with error 2.01887 and transformation    3.86031 0.00896562   -3.06941
+BestCandidate: 31329 with error 1.79577 and transformation    3.85367 0.00927728   -3.06954
+SCAN: 33095
+BestIsland: 31328 with error 2.07476 and transformation    3.86207 0.00639899   -3.07146
+BestCandidate: 31329 with error 1.81864 and transformation    3.85703 0.00674152   -3.07086
+SCAN: 33098
+BestIsland: 31313 with error 2.39053 and transformation   3.93338 0.0108394  -3.06974
+BestCandidate: 31322 with error 1.98875 and transformation     3.8878 0.00763424   -3.07019
+SCAN: 33099
+BestIsland: 31328 with error 2.10548 and transformation   3.85954 0.0034858  -3.07305
+BestCandidate: 31329 with error 1.88357 and transformation    3.85594 0.00274627    -3.0741
+SCAN: 33101
+BestIsland: 31327 with error 1.89129 and transformation    3.8556 0.0063115  -3.06829
+BestCandidate: 31327 with error 1.89129 and transformation    3.8556 0.0063115  -3.06829
+SCAN: 33103
+BestIsland: 31328 with error 1.82273 and transformation     3.78327 6.60131e-05    -3.06915
+BestCandidate: 31328 with error 1.82273 and transformation     3.78327 6.60131e-05    -3.06915
+SCAN: 33105
+BestIsland: 31328 with error 1.85432 and transformation    3.77211 0.00268718   -3.06765
+BestCandidate: 31330 with error 1.66219 and transformation    3.76094 0.00368502    -3.0667
+SCAN: 33106
+BestIsland: 31328 with error 1.88926 and transformation    3.76473 0.00142717   -3.06933
+BestCandidate: 31329 with error 1.69727 and transformation    3.75913 0.00337043   -3.06721
+SCAN: 33107
+BestIsland: 31328 with error 1.86271 and transformation    3.76455 0.00338606   -3.06833
+BestCandidate: 31329 with error 1.65452 and transformation    3.75837 0.00535621   -3.06638
+SCAN: 33108
+BestIsland: 31328 with error 1.71757 and transformation      3.7645 0.000718251    -3.07045
+BestCandidate: 31329 with error 1.49115 and transformation    3.75777 0.00253609   -3.06944
+SCAN: 33110
+BestIsland: 31328 with error 1.85858 and transformation     3.77571 -0.00687505    -3.07719
+BestCandidate: 31330 with error 1.69235 and transformation     3.76496 -0.00531574    -3.07525
+SCAN: 33111
+BestIsland: 31327 with error 1.79612 and transformation    3.76025 0.00117064   -3.06814
+BestCandidate: 31327 with error 1.79612 and transformation    3.76025 0.00117064   -3.06814
+SCAN: 33112
+BestIsland: 31327 with error 1.83545 and transformation    3.75772 -0.0010622   -3.06935
+BestCandidate: 31327 with error 1.83545 and transformation    3.75772 -0.0010622   -3.06935
+SCAN: 33113
+BestIsland: 31327 with error 1.72276 and transformation     3.75754 -0.00365936    -3.07205
+BestCandidate: 31327 with error 1.72276 and transformation     3.75754 -0.00365936    -3.07205
+SCAN: 33115
+BestIsland: 31327 with error 1.77851 and transformation     3.75627 -0.00728774    -3.07266
+BestCandidate: 31327 with error 1.77851 and transformation     3.75627 -0.00728774    -3.07266
+SCAN: 33116
+BestIsland: 31327 with error 1.7486 and transformation     3.76165 -0.00962661    -3.07439
+BestCandidate: 31327 with error 1.7486 and transformation     3.76165 -0.00962661    -3.07439
+SCAN: 33117
+BestIsland: 31327 with error 1.75947 and transformation    3.75295 -0.0105011   -3.07443
+BestCandidate: 31327 with error 1.75947 and transformation    3.75295 -0.0105011   -3.07443
+SCAN: 33118
+BestIsland: 31327 with error 1.81715 and transformation     3.7532 -0.0100987   -3.07399
+BestCandidate: 31327 with error 1.81715 and transformation     3.7532 -0.0100987   -3.07399
+SCAN: 33119
+BestIsland: 31327 with error 1.82688 and transformation   3.75572 -0.014492  -3.07785
+BestCandidate: 31327 with error 1.82688 and transformation   3.75572 -0.014492  -3.07785
+SCAN: 33120
+BestIsland: 31313 with error 2.06932 and transformation     3.81287 -0.00668796    -3.07256
+BestCandidate: 31318 with error 1.82629 and transformation     3.79302 -0.00978495     -3.0724
+SCAN: 33122
+BestIsland: 31328 with error 1.7688 and transformation    3.65975 -0.0157438   -3.07465
+BestCandidate: 31334 with error 1.61986 and transformation    3.64626 -0.0155577   -3.07341
+SCAN: 33123
+BestIsland: 31313 with error 1.90623 and transformation     3.74499 -0.00855015    -3.07435
+BestCandidate: 31322 with error 1.69467 and transformation   3.72734 -0.014085  -3.07708
+SCAN: 33124
+BestIsland: 31313 with error 1.82532 and transformation     3.75041 -0.00890587    -3.07259
+BestCandidate: 31314 with error 1.74677 and transformation     3.75178 -0.00882003    -3.07206
+SCAN: 33125
+BestIsland: 31328 with error 1.77692 and transformation    3.66218 -0.0192532   -3.07713
+BestCandidate: 31334 with error 1.70476 and transformation     3.6501 -0.0187734   -3.07459
+SCAN: 33127
+BestIsland: 31313 with error 1.78857 and transformation    3.75017 -0.0130136   -3.07451
+BestCandidate: 31314 with error 1.72881 and transformation    3.74725 -0.0147613   -3.07519
+SCAN: 33128
+BestIsland: 31345 with error 1.915 and transformation    3.55055 -0.0259157   -3.07578
+BestCandidate: 31347 with error 1.81186 and transformation    3.54493 -0.0242842   -3.07432
+SCAN: 33129
+BestIsland: 31313 with error 1.99144 and transformation    3.73411 -0.0100872   -3.07377
+BestCandidate: 31322 with error 1.89876 and transformation    3.71052 -0.0132687   -3.07437
+SCAN: 33130
+BestIsland: 31345 with error 1.99318 and transformation   3.55032 -0.024695  -3.07621
+BestCandidate: 31347 with error 1.8844 and transformation    3.54504 -0.0226277   -3.07393
+SCAN: 33132
+BestIsland: 31328 with error 1.9326 and transformation    3.65425 -0.0170404   -3.07773
+BestCandidate: 31334 with error 1.89804 and transformation    3.64309 -0.0165453   -3.07585
+SCAN: 33133
+BestIsland: 31327 with error 1.9446 and transformation    3.65942 -0.0128812   -3.07473
+BestCandidate: 31327 with error 1.9446 and transformation    3.65942 -0.0128812   -3.07473
+SCAN: 33134
+BestIsland: 31327 with error 1.90764 and transformation    3.65713 -0.0100308   -3.07371
+BestCandidate: 31327 with error 1.90764 and transformation    3.65713 -0.0100308   -3.07371
+SCAN: 33135
+BestIsland: 31327 with error 1.98616 and transformation   3.66295 -0.014121  -3.07975
+BestCandidate: 31327 with error 1.98616 and transformation   3.66295 -0.014121  -3.07975
+SCAN: 33139
+BestIsland: 31313 with error 1.92039 and transformation     3.65927 -0.00631932    -3.07318
+BestCandidate: 31314 with error 1.86228 and transformation      3.6557 -0.00695062    -3.07305
+SCAN: 33140
+BestIsland: 31328 with error 1.75483 and transformation    3.60054 -0.0175058   -3.07921
+BestCandidate: 31328 with error 1.75483 and transformation    3.60054 -0.0175058   -3.07921
+SCAN: 33142
+BestIsland: 31327 with error 1.9208 and transformation    3.58225 -0.0126652   -3.07667
+BestCandidate: 31327 with error 1.9208 and transformation    3.58225 -0.0126652   -3.07667
+SCAN: 33143
+BestIsland: 31328 with error 1.95654 and transformation    3.54714 -0.0144758   -3.07767
+BestCandidate: 31330 with error 1.94863 and transformation    3.54386 -0.0127537   -3.07621
+SCAN: 33144
+BestIsland: 31328 with error 2.10277 and transformation    3.56395 -0.0132331   -3.07726
+BestCandidate: 31330 with error 1.90126 and transformation    3.55393 -0.0131049   -3.07685
+SCAN: 33145
+BestIsland: 31328 with error 1.97295 and transformation    3.55055 -0.0110942   -3.07498
+BestCandidate: 31328 with error 1.97295 and transformation    3.55055 -0.0110942   -3.07498
+SCAN: 33147
+BestIsland: 31328 with error 1.93589 and transformation    3.53827 -0.0102737   -3.07486
+BestCandidate: 31328 with error 1.93589 and transformation    3.53827 -0.0102737   -3.07486
+SCAN: 33259
+BestIsland: 31313 with error 2.18895 and transformation    2.98718 -0.0125419   -3.07022
+BestCandidate: 31320 with error 1.97171 and transformation    2.96121 -0.0166085   -3.07135
+SCAN: 33277
+BestIsland: 31280 with error 1.97108 and transformation    3.03923 -0.0155553   -3.08013
+BestCandidate: 31280 with error 1.97108 and transformation    3.03923 -0.0155553   -3.08013
+SCAN: 33278
+BestIsland: 31328 with error 1.8342 and transformation    2.76104 -0.0247486   -3.07275
+BestCandidate: 31328 with error 1.8342 and transformation    2.76104 -0.0247486   -3.07275
+SCAN: 33279
+BestIsland: 31313 with error 2.18065 and transformation    2.90334 -0.0195973   -3.07182
+BestCandidate: 31318 with error 1.91801 and transformation    2.86377 -0.0217743   -3.07118
+SCAN: 33280
+BestIsland: 31313 with error 2.27262 and transformation    2.87297 -0.0210432   -3.07216
+BestCandidate: 31315 with error 1.89402 and transformation    2.85624 -0.0224006   -3.07007
+SCAN: 33282
+BestIsland: 31313 with error 2.17756 and transformation    2.85648 -0.0195684    -3.0733
+BestCandidate: 31314 with error 1.72936 and transformation    2.84339 -0.0219768   -3.07473
+SCAN: 33283
+BestIsland: 31313 with error 2.19717 and transformation    2.85503 -0.0199348   -3.07304
+BestCandidate: 31314 with error 1.77183 and transformation    2.84098 -0.0225951   -3.07486
+SCAN: 33284
+BestIsland: 31313 with error 2.13696 and transformation    2.86393 -0.0187768   -3.07158
+BestCandidate: 31315 with error 1.97171 and transformation    2.85861 -0.0208221   -3.07076
+SCAN: 33285
+BestIsland: 31328 with error 1.91414 and transformation    2.76307 -0.0215568   -3.07105
+BestCandidate: 31328 with error 1.91414 and transformation    2.76307 -0.0215568   -3.07105
+SCAN: 33287
+BestIsland: 31313 with error 2.19077 and transformation    2.83593 -0.0216035   -3.07611
+BestCandidate: 31318 with error 1.90961 and transformation    2.82507 -0.0212252   -3.07247
+SCAN: 33288
+BestIsland: 31328 with error 1.94277 and transformation    2.75751 -0.0195229   -3.07005
+BestCandidate: 31328 with error 1.94277 and transformation    2.75751 -0.0195229   -3.07005
+SCAN: 33291
+BestIsland: 31313 with error 2.45358 and transformation    2.85175 -0.0127048   -3.07059
+BestCandidate: 31314 with error 1.98824 and transformation   2.84181 -0.016492  -3.07366
+SCAN: 33296
+BestIsland: 31313 with error 2.20493 and transformation    2.75855 -0.0155227    -3.0705
+BestCandidate: 31319 with error 1.8592 and transformation    2.74393 -0.0164416   -3.06939
+SCAN: 33297
+BestIsland: 31313 with error 2.21888 and transformation    2.78434 -0.0107996   -3.06694
+BestCandidate: 31319 with error 1.82817 and transformation    2.74649 -0.0152334   -3.06876
+SCAN: 33298
+BestIsland: 31313 with error 2.36581 and transformation    2.79632 -0.0162286   -3.07131
+BestCandidate: 31319 with error 1.85646 and transformation    2.74724 -0.0182489    -3.0703
+SCAN: 33299
+BestIsland: 31313 with error 1.97774 and transformation    2.75627 -0.0180698   -3.07333
+BestCandidate: 31317 with error 1.84671 and transformation    2.74405 -0.0217125   -3.07362
+SCAN: 33300
+BestIsland: 31313 with error 2.01734 and transformation    2.75879 -0.0171356   -3.07157
+BestCandidate: 31319 with error 1.96744 and transformation    2.74507 -0.0194278   -3.07186

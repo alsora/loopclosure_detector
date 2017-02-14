@@ -25,6 +25,8 @@ namespace pr {
       oldX_2.setIdentity();
       _last_chi1 = 0;
       _last_chi2 = 0;
+    _damping=1;
+      _count = 0;
       
   }
   
@@ -35,7 +37,7 @@ namespace pr {
                                    ){
 
         float chi = 0;
-        int count = 0;
+        float chiTot = 0;
         float threshold = Solver::_kernel_thereshold;
         for (const IntPair& correspondence: correspondences){
             
@@ -47,19 +49,20 @@ namespace pr {
             
             Eigen::Vector2f error = predicted_point-reference_points[ref_idx];
             
+            chi = error.dot(error);
             
-            if (error.dot(error) >threshold) {
-                count++;
+            if (chi >threshold) {
+                chiTot+=chi;
 
             }
             
             else {
-                chi+= error.dot(error);
+                chiTot+= chi;
             }
      
             
         }
-        return chi;
+        return chiTot;
         
         
     }
@@ -124,6 +127,7 @@ namespace pr {
   }
 
   bool Solver::oneRound(const IntPairVector& correspondences, bool keep_outliers){
+      _count+=1;
     using namespace std;
     linearize(correspondences, keep_outliers);
       _H+=Eigen::Matrix3f::Identity()*_damping;
@@ -135,6 +139,28 @@ namespace pr {
       Eigen::Vector3f dx = _H.ldlt().solve(-_b);
       X = v2t(dx)*X;
       
+      //Compute new error
+     float newChi = Solver::computeError (correspondences,
+                            *_scan_points,
+                            *_ref_points);
+
+     if (newChi < _chi_inliers){
+          _damping *= 0.5;
+
+
+      }
+      if ((newChi >= _chi_inliers )){
+          _damping *= 4;
+          X = oldX_1;
+      }
+    
+      
+
+      //RISCRIVERE STOPPING CONDITIONS BASATE SU NEWCHI
+      
+    /*  float newChi = _chi_inliers;
+      
+      
       if ((_last_chi2!=0)&&(_last_chi2<_chi_inliers)){
           
           if (_last_chi1<_last_chi2){
@@ -144,16 +170,20 @@ namespace pr {
               X = oldX_2;
           }
           return false;
-      }
+      }*/
       
-      if ((std::abs(_last_chi1 - _chi_inliers)<0.15)&&(std::abs(_last_chi2 - _chi_inliers)<0.15)&&(std::abs(_last_chi1 - _last_chi2)<0.15)){
-          
+      float convergenceThreshold = 0.05;
+      
+      if (_count > 10){
+          convergenceThreshold = 0.3;
+          }
+      
+    if ((std::abs(_last_chi1 - newChi)<convergenceThreshold)&&(std::abs(_last_chi2 - newChi)<convergenceThreshold)&&(std::abs(_last_chi1 - _last_chi2)<convergenceThreshold)){
           return false;
       }
       else {
-          
           _last_chi2 = _last_chi1;
-          _last_chi1 = _chi_inliers;
+          _last_chi1 = newChi;
           oldX_2 = oldX_1;
           oldX_1 = X;
           return true;}

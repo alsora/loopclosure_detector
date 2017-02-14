@@ -25,9 +25,10 @@ int main (int argc, char** argv) {
     
     
     //Conditions for being considered a candidate closure
-    float errorThreshold = 2.5;    //Maximum error between reference and target
-    int correspondencesThreshold = 400;     //Minimum number of corresponding points between reference and target
-    float islandThrehsold = 25;     //Discard a whole island if its first element has an error bigger than this threshold
+    float errorThreshold = 2;    //Maximum error between reference and target
+    int correspondencesThreshold = 450;     //Minimum number of corresponding points between reference and target
+    float islandErrorThrehsold = 10;     //Discard a whole island if its first element has an error bigger than this threshold
+    int islandCorrespondencesThreshold = 400;
     int distanceThreshold = 5;      // Don't compare scans which are too far
     
     
@@ -94,10 +95,10 @@ int main (int argc, char** argv) {
     
     DistanceMapCorrespondenceFinder correspondence_finder;
     
-    int rows = 400;     //Dimensions for the distance map
-    int cols = 400;
+    int rows = 500;     //Dimensions for the distance map
+    int cols = 500;
     
-    float max_distance=40;  //Threshold for nearest neighbors
+    float max_distance=15;  //Threshold for nearest neighbors
     
     
     
@@ -120,6 +121,7 @@ int main (int argc, char** argv) {
     Vector2fVector newPoints;          //Vector used as storage for transforming points
     Eigen::Vector2f newPoint;          //Vector used as storage for coordinates
     
+    //Storage variables used to find the best matching scan
     float chi;
     float currentIslandChi;
     Eigen::Matrix3f currentIslandTransf;
@@ -158,36 +160,44 @@ int main (int argc, char** argv) {
                                max_distance);
     
                for (vector<int> island : groupedScans){
+                   
                    firstOfIsland = true;
-                   for (int targetID : island){
+                   targetPose = posesMap.find(island[0])->second; //it's the same for the whole island
+                   float distanceFromReference =abs(actualX - targetPose(0)); //it's the same for the whole island
+                    if ((distanceFromReference<distanceThreshold*1.5)&&(island[0] < inversionScanID)){ // I run ICP only if the scan preceeds the reference one and it's not too far from it.
+                        for (int targetID : island){
+                            //targetPose = posesMap.find(targetID)->second;
+                       
             
-                       targetPose = posesMap.find(targetID)->second;
-                       float distanceFromReference =abs(actualX - targetPose(0));
-            
-                       if ((distanceFromReference<distanceThreshold*1.5)&&(targetID < inversionScanID)){ // I run ICP only if the scan preceeds the reference one and it's not too far from it.
+                      
                 
                            iterate = true;
                 
                            guess = vec2mat(referencePose).inverse() * vec2mat(targetPose);
-                
-                
+                   
                            targetPoints = cloudsMap.find(targetID)->second;
+                           
                 
                            solver.init(referencePoints, targetPoints,guess); //Initialization of the solver, 1 time for each target
+                           
                 
                            while (iterate){
-                    
                                newPoints.clear();
                                state = solver.getX();
                                for (Eigen::Vector2f point : targetPoints){
+      
                                    newPoint = state.block<2,2>(0,0)*point + state.block<2,1>(0,2);
                                    newPoints.push_back(newPoint);
+
                                }
+                               
                                
                                adjustedPoints = newPoints; //Adjusted points according to current guess
                                displayableAdjusted = database.pointsToDisplay(adjustedPoints);
                                correspondence_finder.compute(displayableAdjusted);
-                    
+                               
+                               
+                               
                                iterate = solver.oneRound(correspondence_finder.correspondences(),false);
                     
                            }
@@ -210,7 +220,7 @@ int main (int argc, char** argv) {
                            if (firstOfIsland){//If the error of the first scan is too big, break goes directly to the next island. Otherwise I store the node information.
                     
                                firstOfIsland = false;
-                               if ((chi >= islandThrehsold)||(correspondence_finder.correspondences().size()<correspondencesThreshold)){
+                               if ((chi >= islandErrorThrehsold)||(correspondence_finder.correspondences().size()<islandCorrespondencesThreshold)){
                                    break;  }
                     
                                else{
@@ -219,8 +229,10 @@ int main (int argc, char** argv) {
                                    currentIslandFirstID = targetID;
                                }
                            }
+                           
+
                 
-                           if ((chi < bestChi)&&(correspondence_finder.correspondences().size()>=correspondencesThreshold)){
+                           if ((chi < bestChi)&&(correspondence_finder.correspondences().size()>= correspondencesThreshold)){
                                bestChi = chi;
                                bestTransf = state;
                                bestID = targetID;

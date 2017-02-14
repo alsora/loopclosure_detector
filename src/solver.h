@@ -79,6 +79,7 @@ class Solver{
       float _last_chi1;
       float _last_chi2;
     int _num_inliers;
+    int _count;
       
   };
 
