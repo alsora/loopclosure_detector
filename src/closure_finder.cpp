@@ -28,9 +28,8 @@ int main (int argc, char** argv) {
     float errorThreshold = 2;    //Maximum error between reference and target
     int correspondencesThreshold = 450;     //Minimum number of corresponding points between reference and target
     float islandErrorThrehsold = 10;     //Discard a whole island if its first element has an error bigger than this threshold
-    int islandCorrespondencesThreshold = 400;
-    int distanceThreshold = 5;      // Don't compare scans which are too far
-    
+    int islandCorrespondencesThreshold = 400;//Discard a whole island if its first element has less corresponding points than this threshold 
+    int distanceThreshold = 5;      // Threshold used for cropping scan points and to not compare scans which are too far (distanceThreshdol*1.5)
     
 
     ScanDatabase database(distanceThreshold);

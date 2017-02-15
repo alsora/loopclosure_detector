@@ -164,7 +164,7 @@ namespace pr {
       if  (newChi < _chi_inliers){
           _damping *= 0.5;  }
       
-      else (newChi >= _chi_inliers ){
+      else {
           _damping *= 4;
           X = oldX_1;   }
       
