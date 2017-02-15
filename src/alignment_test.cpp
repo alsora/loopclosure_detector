@@ -51,11 +51,6 @@ int main (int argc, char** argv) {
     database.extractOdometry(odomFile);
     
     
-    
-    
-    
-    
-    map<int, vector<float>> m1 = database.getScanList();
     map<int,Vector2fVector> m2 = database.getScanDrawings();
     map<int, Eigen::Vector3f> m3 = database.getOdometryList();
     
@@ -131,7 +126,7 @@ int main (int argc, char** argv) {
     solver.init(reference_points, scan_points,guess);
     
     cout<<"Initial Guess Vector: "<<mat2vec(guess).transpose()<<endl;
-    int conta = 0;
+    
     Vector2fVector corrected_points;
     for (Eigen::Vector2f vec: scan_points){
 
@@ -154,15 +149,12 @@ int main (int argc, char** argv) {
                                rows,
                                cols,
                                max_distance);
-    //correspondence_finder.compute(corrected_points);
-    
-    
-    
+
 
     
     RGBImage shown_image(rows,cols);
     
-    bool iterate = true;
+
     char key=0;
     const char ESC_key=27;
     
@@ -174,8 +166,6 @@ int main (int argc, char** argv) {
         
         correspondence_finder.compute(display_corrected);
 
-
-            cout<< correspondence_finder.correspondences().size() << " " <<reference_points.size() << " " <<scan_points.size()<<endl;
         
         drawPoints(shown_image,display_reference, cv::Scalar(255,0,0),1);
         
@@ -190,7 +180,7 @@ int main (int argc, char** argv) {
                             display_corrected,
                             correspondence_finder.correspondences(), cv::Scalar(0,0,255));
         
-        float chi = solver.computeError(correspondence_finder.correspondences(),scan_points,reference_points );
+        float chi = solver.computeError(correspondence_finder.correspondences());
         cout<<"Error: " << chi << " Mean Error: "<<chi/correspondence_finder.correspondences().size()<< " Matched points ratio: "<< 100*correspondence_finder.correspondences().size()/reference_points.size()<<"%"<< endl;
         
         cv::imshow("alignment_test", shown_image);
@@ -198,7 +188,8 @@ int main (int argc, char** argv) {
         switch(key) {
                 
             case 13 : {//enter
-                //correspondence_finder.compute(display_corrected);
+                
+                bool iterate = true;
                 
                 while (iterate){
                     Vector2fVector new_points;
@@ -221,22 +212,13 @@ int main (int argc, char** argv) {
                         for (Eigen::Vector2f point : scan_points){
                             Eigen::Vector2f new_point;
                             new_point = mat.block<2,2>(0,0)*point + mat.block<2,1>(0,2);
-                            new_points.push_back(new_point);
-                            
-                        }
+                            new_points.push_back(new_point);        }
                         corrected_points = new_points;
-
-                        
-}
-                    
+                            }
                 }
-                
             }break;
                 
-                
             case ' ' : {
-                
-                correspondence_finder.compute(display_corrected);
                 
                 solver.oneRound(correspondence_finder.correspondences(),false);
                 Vector2fVector new_points;
@@ -248,15 +230,18 @@ int main (int argc, char** argv) {
                     
                 }
                 corrected_points = new_points;
-                
-                
-                
+            
             }break;
                 
                 
             case 'x' : {
                 cout<< solver.getX()<< endl;
                 cout << "Resulting transformation: " << mat2vec(solver.getX()).transpose()<<endl;
+            }break;
+                
+                
+            case 'h' : {
+                cout << solver.computeH(correspondence_finder.correspondences())<<endl;
             }break;
         }
     }

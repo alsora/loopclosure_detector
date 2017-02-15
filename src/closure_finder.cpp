@@ -126,12 +126,14 @@ int main (int argc, char** argv) {
     float currentIslandChi;
     Eigen::Matrix3f currentIslandTransf;
     int currentIslandFirstID;
+    Eigen::Matrix3f currentIslandH;
     float bestChi;
     Eigen::Matrix3f bestTransf;
     int bestID;
     float bestIslandChi;
     Eigen::Matrix3f bestIslandTransf;
     int bestIslandFirstID;
+    
     
     ofstream output_file;
     output_file.open("../candidate_closures.txt");
@@ -214,7 +216,7 @@ int main (int argc, char** argv) {
                            correspondence_finder.compute(displayableAdjusted);
                 
                 
-                           chi = solver.computeError(correspondence_finder.correspondences(),targetPoints,referencePoints );
+                           chi = solver.computeError(correspondence_finder.correspondences());
                 
                 
                            if (firstOfIsland){//If the error of the first scan is too big, break goes directly to the next island. Otherwise I store the node information.
@@ -247,8 +249,9 @@ int main (int argc, char** argv) {
     
                if ((bestChi <= errorThreshold)){
                    output_file<<"SCAN: "<<referenceID<<endl;
-                   output_file<<"BestIsland: "<< bestIslandFirstID << " with error " << bestIslandChi << " and transformation "<< mat2vec(bestIslandTransf).transpose() <<endl;
-                   output_file<<"BestCandidate: "<< bestID << " with error " << bestChi << " and transformation "<< mat2vec(bestTransf).transpose() <<endl;
+                   output_file<<"BestIsland: "<< bestIslandFirstID << " with error " << bestIslandChi << ", transformation "<< mat2vec(bestIslandTransf).transpose()<<endl;
+                   output_file<<"BestCandidate: "<< bestID << " with error " << bestChi << ", transformation "<< mat2vec(bestTransf).transpose()<<endl;
+
                }
            }
         }

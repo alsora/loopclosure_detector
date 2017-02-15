@@ -39,7 +39,7 @@ int main (int argc, char** argv) {
         
     }
 
-   map<int,Vector2fVector> m2 = database.getScanDrawings();
+    map<int,Vector2fVector> m2 = database.getScanDrawings();
     
     
     RGBImage shown_image(400,400);
@@ -56,12 +56,12 @@ int main (int argc, char** argv) {
         drawPoints(shown_image,display_points, cv::Scalar(255,0,0),1);
                 cv::imshow("display_test", shown_image);
 
-    key=cv::waitKey(0);
-        switch(key) {
-            case 'd': t = min (t+1, scan_count-1); break;
-            case 'a' : t = max(t-1,0);break;
-            default: ;
+        key=cv::waitKey(0);
+            switch(key) {
+                case 'd': t = min (t+1, scan_count-1); break;
+                case 'a' : t = max(t-1,0);break;
+                default: ;
+                }
         }
-    }
 
 }

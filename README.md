@@ -8,7 +8,7 @@ Libraries needed for compiling:
 
 loop-detector-2d.txt contains the output of a laser scanner.
 
-trajectoryLaser.g2o contains some key nodes out from the total poses where scans have been made, together with their pose (extracted from odometry).
+trajectoryLaser.g2o contains some key nodes out from the total locations where scans have been made, together with their pose (x y theta), extracted from odometry.
 
 To compile:
 

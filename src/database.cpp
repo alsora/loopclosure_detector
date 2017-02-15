@@ -5,8 +5,7 @@ namespace pr {
         _threshold = threshold;
     }
 
-    ScanDatabase::ScanDatabase(){
-    }
+    ScanDatabase::ScanDatabase(){   }
     
     
     int ScanDatabase::extractData(const std::string line){
@@ -134,18 +133,14 @@ namespace pr {
                         correspondent_scan_tag = -1;
                         pose.setZero();
                         
-                        break; //Exit from the for loop
+                        break;  }//Exit from the for loop
+                            }
                     }
-                }
-            }
             else {
-                std::cout<< "Invalid tag: "<<g2o_tag<<std::endl;
-            }
+                std::cout<< "Invalid tag: "<<g2o_tag<<std::endl;    }
             
-
         }
 
-        
         return  odometry_list.size();
         
     }
@@ -154,19 +149,15 @@ namespace pr {
     
     
     std::map<int,Vector2fVector> ScanDatabase::getScanDrawings(){
-        return scan_drawings;
-    }
-    
+        return scan_drawings;       }
     
     
     std::map<int, std::vector<float>> ScanDatabase::getScanList(){
-        return scan_list;
+        return scan_list;           }
     
-    }
     
     std::map<int, Eigen::Vector3f> ScanDatabase::getOdometryList(){
-        return odometry_list;
-    }
+        return odometry_list;       }
 
 
 }

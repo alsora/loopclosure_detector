@@ -6,10 +6,11 @@
 namespace pr {
   class ScanDatabase{
   public:
-    EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
+      EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
 
-    ScanDatabase (int threshold);
-          ScanDatabase ();
+      ScanDatabase (int threshold);
+      
+      ScanDatabase ();
     
       int extractData (const std::string line);
       
